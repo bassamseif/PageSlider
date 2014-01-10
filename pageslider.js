@@ -22,10 +22,10 @@ function PageSlider(container) {
         }
         if (state === stateHistory[l-2]) {
             stateHistory.pop();
-            this.slidePageFrom(page, 'left');
+            this.slidePageFrom(page, 'pos_left');
         } else {
             stateHistory.push(state);
-            this.slidePageFrom(page, 'right');
+            this.slidePageFrom(page, 'pos_right');
         }
 
     }
@@ -36,7 +36,7 @@ function PageSlider(container) {
         container.append(page);
 
         if (!currentPage || !from) {
-            page.attr("class", "page center");
+            page.attr("class", "page pos_center");
             currentPage = page;
             return;
         }
@@ -52,8 +52,8 @@ function PageSlider(container) {
         container[0].offsetWidth;
 
         // Position the new page and the current page at the ending position of their animation with a transition class indicating the duration of the animation
-        page.attr("class", "page transition center");
-        currentPage.attr("class", "page transition " + (from === "left" ? "right" : "left"));
+        page.attr("class", "page transition pos_center");
+        currentPage.attr("class", "page transition " + (from === "pos_left" ? "pos_right" : "pos_left"));
         currentPage = page;
     }
 
